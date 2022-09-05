@@ -1,2 +1,4 @@
-# leb128r
-LEB128 with reduced length, up to ⅓ shorter
+## Overwiew
+Unlike LEB128, this software encodes numbers from the range 16384..16511 using only 2 bytes.  
+
+How? Read the code.
