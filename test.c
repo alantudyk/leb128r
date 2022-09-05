@@ -35,7 +35,7 @@ int main(void) {
         pf("d: %20lu %20ld\n\n", b, p - r);
     }
     
-    for (uint64_t i = 0; i < sizeof(U) / 8; ++i) {
+    for (uint64_t i = 0; i < sizeof(I) / 8; ++i) {
         int64_t a = I[i], b;
         uint8_t r[10] = {}, *p = leb128r_encode_i64(a, r);
         pf("e: %20ld %20ld\n", a, p - r);
