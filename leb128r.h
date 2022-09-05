@@ -22,7 +22,7 @@ static inline const uint8_t* leb128r_decode_u64(uint64_t *v, const uint8_t *p) {
     uint64_t s = 0, x = 0, b = 0; *v = 0;
     do s += x, *v |= (uint64_t)(*p & 127) << b, x = 1LU << (b += 7);
         while ((*p++ & 128) && b < 63);
-    if (b == 63) *v |= (uint64_t)(p[-1]) << 56; else if (p[-1] & 128) return NULL;
+    if (b == 63) *v |= (uint64_t)(p[-1]) << 56;
     *v += s;
     return p;
 }
