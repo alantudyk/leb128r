@@ -4,6 +4,14 @@
 #include <stdint.h>
 #include <stddef.h>
 
+_Static_assert(__SIZEOF_POINTER__ == 8, "");
+
+#if __linux__
+
+#else
+#error
+#endif
+
 static inline      uint8_t* leb128r_encode_u64(uint64_t v,         uint8_t *p) {
     uint64_t l = 0, s = 128; 
     while (++l < 10 && v >= s) v -= s, s <<= 7;
