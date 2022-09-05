@@ -23,11 +23,10 @@ static const  int64_t I[] = {
 
 int main(void) {
     
-    pf("\n");
+    pf("\n"); uint64_t a, b; uint8_t r[10], *p;
     
     for (uint64_t i = 0; i < sizeof(U) / 8; ++i) {
-        uint64_t a = U[i], b;
-        uint8_t r[10] = {}, *p = leb128r_encode_u64(a, r);
+        a = U[i], p = leb128r_encode_u64(a, r);
         pf("e: %20lu %20ld\n", a, p - r);
         if ((p = (void *)leb128r_decode_u64(&b, r)) == NULL || a != b) {
             pf("F*\n"); return 1;
@@ -36,8 +35,7 @@ int main(void) {
     }
     
     for (uint64_t i = 0; i < sizeof(I) / 8; ++i) {
-        int64_t a = I[i], b;
-        uint8_t r[10] = {}, *p = leb128r_encode_i64(a, r);
+        a = I[i], p = leb128r_encode_i64(a, r);
         pf("e: %20ld %20ld\n", a, p - r);
         if ((p = (void *)leb128r_decode_i64(&b, r)) == NULL || a != b) {
             pf("F*\n"); return 1;
