@@ -2,15 +2,14 @@
 #define ___LEB128R_H
 
 #include <stdint.h>
-#include <stddef.h>
 
 _Static_assert(__linux__ && __SIZEOF_POINTER__ == 8, "");
 
 static inline      uint8_t* leb128r_encode_u64(uint64_t v,         uint8_t *p) {
     uint64_t l = 0, s = 128; 
     while (++l < 9 && v >= s) v -= s, s <<= 7;
-    while (l--) *p++ = 128 | (v & 127), v >>= 7;
-    p[-1] = (v << 7) | (p[-1] & 127);
+    while (--l) *p++ = 128 | (v & 127), v >>= 7;
+    *p++ = v;
     return p;
 }
 
