@@ -1,5 +1,4 @@
-#ifndef ___LEB128R_H
-#define ___LEB128R_H
+#pragma once
 
 #include <stdint.h>
 
@@ -34,5 +33,3 @@ static inline const uint8_t* leb128r_decode_i64( int64_t *v, const uint8_t *p) {
     *v = (u >> 1) ^ (-(int64_t)(u & 1));
     return p;
 }
-
-#endif
